@@ -90,7 +90,7 @@ func ParseGithubPayload(w http.ResponseWriter, r *http.Request) {
 
 	case github.IssueCommentPayload:
 		for _, notify := range notifies {
-			if strings.Contains(res.Issue.Body, notify.Mention) {
+			if strings.Contains(res.Comment.Body, notify.Mention) {
 				SendToSlack(res, notify)
 			}
 		}
